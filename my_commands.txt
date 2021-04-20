@@ -1,0 +1,67 @@
+Создание виртуального окружения
+python3 -m venv venv
+
+Запуск виртуального окружения проекта
+В Windows: .\venv\Scripts\activate
+В macOS или Linux: source venv/bin/activate
+
+Остановка виртуального окружения
+deactivate
+
+Установка pytest и запуск тестов
+pip install pytest pytest --version
+
+Обновить менеджеров пакетов pip
+python3 -m pip install --upgrade pip
+
+Установка Django версии 2.2.19
+pip install Django==2.2.19
+
+Генерация SSH ключа
+ssh-keygen -t rsa -b 4096 -C "budaev.e@gmail.com"
+
+# Форматирование кода
+# на mac option + command + L
+# на windows ctrl + alt + I
+
+pip freeze > requirements.txt
+При клонировании репозитория на другой компьютер или сервер выполните (предварительно создав и активировав нужное виртуальное окружение):
+$ pip install -r requirements.txt
+Таким образом, разом установятся все необходимые пакеты.
+
+Создать базовую структуру проекта
+django-admin startproject yatube
+или
+python3 -m django startapp yatube
+
+Запуск сервера
+python3 manage.py runserver
+
+Создать миграцию
+python manage.py makemigrations
+Запустить все миграции
+python manage.py migrate
+
+Создать супер пользователя
+python manage.py createsuperuser
+
+Сборка всей статики
+python manage.py collectstatic
+
+
+GIT
+# Добавить папку в игнор-лист гита
+# командой из корневой директории проекта (а можно дописать gitignore руками)
+echo 'static' >> .gitignore
+
+# Удалить папку из списка отслеживаемых файлов (staging area)
+git rm -r --cached static
+
+# Добавить файл в гит
+git add .gitignore
+
+# Зафиксировать изменения в новом коммите
+git commit -m 'Директория static добавлена в gitignore'
+
+# Запушить
+git push
