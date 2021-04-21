@@ -26,7 +26,7 @@ ssh-keygen -t rsa -b 4096 -C "budaev.e@gmail.com"
 
 pip freeze > requirements.txt
 При клонировании репозитория на другой компьютер или сервер выполните (предварительно создав и активировав нужное виртуальное окружение):
-$ pip install -r requirements.txt
+pip install -r requirements.txt
 Таким образом, разом установятся все необходимые пакеты.
 
 Создать базовую структуру проекта
