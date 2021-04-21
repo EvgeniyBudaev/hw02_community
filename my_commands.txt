@@ -49,6 +49,10 @@ python manage.py createsuperuser
 python manage.py collectstatic --clear
 python manage.py collectstatic
 
+Установка pytest и запуск тестов
+pip install pytest
+pytest --version
+
 
 GIT
 # Добавить папку в игнор-лист гита

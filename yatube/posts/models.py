@@ -20,7 +20,7 @@ class Group(models.Model):
 class Post(models.Model):
     group = models.ForeignKey(Group, null=True, blank=True,
                               verbose_name='Сообщество',
-                              related_name="posts",
+                              related_name="posts_group",
                               on_delete=models.CASCADE)
     text = models.TextField(verbose_name="Текст поста")
     pub_date = models.DateTimeField(auto_now_add=True,
