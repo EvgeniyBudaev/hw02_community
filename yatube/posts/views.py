@@ -21,3 +21,13 @@ def group_posts(request, slug):
     page_number = request.GET.get('page')
     page = paginator.get_page(page_number)
     return render(request, "group.html", {"group": group, "page": page})
+
+
+def profile(request, username):
+    # тут тело функции
+    return render(request, 'profile.html', {})
+
+
+def post_view(request, username, post_id):
+    # тут тело функции
+    return render(request, 'post.html', {})
