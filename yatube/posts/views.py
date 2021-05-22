@@ -14,7 +14,8 @@ def index(request):
     page_number = request.GET.get('page')
     page = paginator.get_page(page_number)
     current_year = dt.datetime.now().year
-    return render(request, "index.html", {"page": page, "year": current_year})
+    return render(request, "posts/index.html",
+                  {"page": page, "year": current_year})
 
 
 def group_posts(request, slug):
@@ -23,7 +24,7 @@ def group_posts(request, slug):
     paginator = Paginator(posts_list, 10)
     page_number = request.GET.get('page')
     page = paginator.get_page(page_number)
-    return render(request, "group.html", {"group": group, "page": page})
+    return render(request, "posts/group.html", {"group": group, "page": page})
 
 
 def profile(request, username):
@@ -39,7 +40,7 @@ def profile(request, username):
         "posts_count": author.posts.count()
     }
 
-    return render(request, 'profile.html', context)
+    return render(request, 'posts/profile.html', context)
 
 
 def post_view(request, username, post_id):
@@ -51,7 +52,7 @@ def post_view(request, username, post_id):
         "posts_count": post.author.posts.count()
     }
 
-    return render(request, 'post.html', context)
+    return render(request, 'posts/post.html', context)
 
 
 @login_required
@@ -69,7 +70,7 @@ def new_post(request):
         "form": form,
     }
 
-    return render(request, "new_post.html", context)
+    return render(request, "posts/new_post.html", context)
 
 
 @login_required
@@ -88,7 +89,7 @@ def post_edit(request, username, post_id):
             'form': form,
         }
 
-        return render(request, 'post_edit.html', context)
+        return render(request, 'posts/post_edit.html', context)
 
     else:
         return redirect('post', username=username, post_id=post_id)
