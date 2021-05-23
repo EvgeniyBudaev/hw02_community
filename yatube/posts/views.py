@@ -10,6 +10,7 @@ from yatube.settings import POSTS_IN_PAGINATOR
 
 
 def index(request):
+    """Главная страница с постами"""
     post_list = Post.objects.all()
     paginator = Paginator(post_list, POSTS_IN_PAGINATOR)
     page_number = request.GET.get('page')
@@ -20,6 +21,7 @@ def index(request):
 
 
 def group_posts(request, slug):
+    """Посты по конкретной группе"""
     group = get_object_or_404(Group, slug=slug)
     posts_list = Post.objects.filter(group=group)
     paginator = Paginator(posts_list, POSTS_IN_PAGINATOR)
@@ -29,6 +31,7 @@ def group_posts(request, slug):
 
 
 def profile(request, username):
+    """Профиль юзера."""
     author = get_object_or_404(User, username=username)
     posts = author.posts.all()
     paginator = Paginator(posts, POSTS_IN_PAGINATOR)
@@ -45,6 +48,7 @@ def profile(request, username):
 
 
 def post_view(request, username, post_id):
+    """Показать пост."""
     post = get_object_or_404(Post, author__username=username, pk=post_id)
 
     context = {
@@ -58,6 +62,7 @@ def post_view(request, username, post_id):
 
 @login_required
 def new_post(request):
+    """Создать новый пост."""
     if request.method == "POST":
         form = PostForm(request.POST)
         if form.is_valid():
@@ -75,6 +80,7 @@ def new_post(request):
 
 
 def post_edit(request, username, post_id):
+    """Отредактировать пост."""
     post = get_object_or_404(Post, author__username=username, pk=post_id)
 
     if request.user == post.author:
