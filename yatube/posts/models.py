@@ -42,4 +42,4 @@ class Post(models.Model):
 
     def __str__(self):
         """Возвращает название группы в формате строки."""
-        return self.text
+        return self.text[:15]
